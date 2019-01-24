@@ -60,7 +60,8 @@ html, body {
   width: $nav-width;
   background-color: $nav-bg;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 500;
+  border-right: 1px solid #E6ECF1;
 
   // language selector for mobile devices
   .lang-selector {
@@ -75,7 +76,8 @@ html, body {
   .logo {
     display: block;
     max-width: 100%;
-    margin-bottom: $logo-margin;
+    width: 50%;
+    margin: $logo-margin 0px $logo-margin $nav-padding;
   }
 
   &>.search {
@@ -347,13 +349,11 @@ html, body {
   h1 {
     @extend %header-font;
     font-size: 25px;
-    padding-top: 0.5em;
+    padding-top: 1.5em;
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    background-color: #fdfdfd;
+    //border-top: 1px solid #E6ECF1;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -364,12 +364,13 @@ html, body {
   h2 {
     @extend %header-font;
     font-size: 19px;
-    margin-top: 4em;
+    margin-top: 2em;
     margin-bottom: 0;
-    border-top: 1px solid #ccc;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
     background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
+    border-bottom: 1px solid #f1f1f1;
+    margin-bottom: 1.5em;
   }
 
   // h2s right after h1s should bump right up
@@ -382,8 +383,8 @@ html, body {
   h3, h4, h5, h6 {
     @extend %header-font;
     font-size: 15px;
-    margin-top: 2.5em;
     margin-bottom: 0.8em;
+    margin-top: 1.75em;
   }
 
   h4, h5, h6 {
@@ -466,7 +467,8 @@ html, body {
     padding-bottom: 1em;
     margin-top: 1.5em;
     margin-bottom: 1.5em;
-    background: $aside-notice-bg;
+    border: 1px solid #d9edff;
+    background-color: $aside-notice-bg;
     line-height: 1.6;
 
     &.warning {

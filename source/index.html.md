@@ -1,239 +1,304 @@
 ---
-title: API Reference
+title: APIリファレンス
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
-  - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  #- <a href='#'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - errors
+  #- errors
 
 search: true
 ---
 
-# Introduction
+# はじめに
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+このドキュメントは株式会社ギフティが提供する来店認証システム (eGift invitation)の利用方法を説明するものです。
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+# 来店認証システムとは
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+来店認証システムは店舗やイベント会場に来店/来場することでデジタルギフトがその場でもらえるO2Oキャンペーンツールです。
+来店/来場した人にだけデジタルギフトが発行されるため景品の在庫リスクは発生せず、同時に来店/来場データの取得も可能です。
 
-# Authentication
+![overview](/images/egift-invitation-overview.png)
 
-> To authorize, use this code:
+## 事前準備
 
-```ruby
-require 'kittn'
+- キャンペーンの設定
+- 店舗の登録
+- スタンプ利用設定
+- 贈呈するギフトの設定
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+などを事前に行いキャンペーンが実施可能な状態にします。
 
-```python
-import kittn
+## 1. キャンペーンエントリー
+キャンペーンへのエントリー方法は下記の通りです。
+エントリーページ(Webページ)からのエントリー
+Web APIを使用したエントリー
+キャンペーンへエントリーすることで参加者は招待状(ユニークなURL)を取得します。
 
-api = kittn.authorize('meowmeowmeow')
-```
+## 2. 来店/来場
+キャンペーンへエントリーした参加者に、エントリー時に取得した招待状を対象の店舗/会場へ持参してもらいます。対象店舗には事前準備にて用意したスタンプが設置してあります。
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+## 3. 店舗/会場にてアクティベーション
+キャンペーン/施策に応じた条件を満たした参加者の持参した招待状へスタンプを押すことでアクティベーションをします。
+各店舗ごとのアクティベーション実績は管理画面より確認することができます。
+キャンペーン参加者は招待状をアクティベーションしてもらったことで、ギフト取得可能な状態になります。
 
-```javascript
-const kittn = require('kittn');
+## 4. ギフト贈呈
+アクティベーション済みの招待状からギフト受け取りボタンを押下することで、キャンペーン参加者はギフトが取得できます。
+ここでは事前準備の際に設定したギフトが発行されます。
 
-let api = kittn.authorize('meowmeowmeow');
-```
+# 用語定義
 
-> Make sure to replace `meowmeowmeow` with your API key.
+## キャンペーン
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+実施する施策各種設定を保持するリソース。
+どのようなギフトを発行するか
+いくつまでアクティベーション可能にするのか
+どのようなユーザーフローにするのか
+など各種ビジネスロジックを保持します。
+2019年01月現在、ギフティスタッフが内部作成したキャンペーンのIDがAPI利用のために共有されます。
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+## エントリー
+ユーザーがキャンペーンへ参加することを意味します。
+エントリーが成功するとキャンペーンへ参加したユーザーへ招待状が付与されます。
 
-`Authorization: meowmeowmeow`
+## 招待状
+アクティベーションすることでギフトが発行可能になるチケット(ユニークなURL)。
+スタンプを画面に押下するか、パスコードを入力することでアクティベーションすることが可能になります。
+
+## アクティベーション
+店舗/会場等に設置したスタンプを招待状に押下する、もしくは招待状にパスコードを入力することで、招待状がギフト発行な状態になることを意味します。
+
+## スタンプ
+弊社が提供する電子スタンプを指します。
+店舗や会場に事前に配置しておき、招待状画面へ押下することでアクティベーションすることができます。
+
+## ギフト
+実際の商品と引き換えることができるチケットを指します。
+
+# 認証
+
+Web APIを利用するためには認証する必要があります。認証にはHTTP Basic Authを使用します。
+
+## 認証情報を取得する
+
+APIの利用申請後、弊社スタッフより共有されます。
+
+## 認証方法
+
+[HTTP Basic Auth](https://en.wikipedia.org/wiki/Basic_access_authentication)を使用して行います。
+
+`Authorization: Basic credentials`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+"credentials"には実際のトークンを入れてご利用ください。
 </aside>
 
-# Kittens
+# リクエスト基本設定
 
-## Get All Kittens
+## プロトコル
+`HTTPS`を使用します。
 
-```ruby
-require 'kittn'
+## エンドポイント
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
+### 検証環境
 
-```python
-import kittn
+`invitation-stg.giftee.co`
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+### 本番環境
+
+`invitation.giftee.co`
+
+## Content-type
+
+`application/json; charset=utf-8`
+
+## リクエストパラメーター
+### GETリクエストパラメーター
+
+URIクエリを使用します。
+
+> GETリクエストの場合は、URIクエリを使用します。
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl -H "Content-Type: application/json" -u "<credential>" -i
+"https://invitation.giftee.co/api/invitations?campaign_uid=sample"
 ```
 
-```javascript
-const kittn = require('kittn');
+### GET以外のリクエストパラメーター
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+リクエストボディを使用します。
+
+> GET以外のリクエストの場合は、リクエストボディを使用します。
+
+```shell
+curl -X POST -H "Content-Type: application/json" \
+-u "<credential>" \
+-d '{"campaign_uid": "sample"}' \
+"https://invitation.giftee.co/invitations"
 ```
 
-> The above command returns JSON structured like this:
+# 招待状
+
+## 参照
+
+```shell
+curl -H "Content-Type: application/json" -u "<credential>" -i
+"https://invitation.giftee.co/api/invitations?campaign_uid=sample"
+```
+
+> レスポンス
+
+```json
+{
+  "campaign_uid": "sample",
+  "option": null,
+  "url": "https://invitation.giftee.co/invitations/xxxx-xxxx-xxxxx-xxxxxx",
+  "status": "inactive",
+  "activated_at": null,
+  "activation_type": null,
+  "activated_shop_name": null,
+  "created_at": "2019-01-01T10:00:00+09:00"
+}
+```
+
+このエンドポイントを使用することで指定した招待状を取得することができます。
+
+### HTTP Method
+`GET`
+
+### End Point
+
+`https://invitation.giftee.co/api/invitations/:id`
+
+### URL Parameter
+
+属性 | 必須 | 詳細
+--------- | ------- | -----------
+id | true | 招待状を一意に特定する識別子です。
+
+<aside class="notice">
+idはURL(https://invitation.giftee.co/invitations/xxxx-xxxx-xxxxx-xxxxxx) のうち、xxxx-xxxx-xxxxx-xxxxxx部分を指します。
+</aside>
+
+## 一覧参照
+
+このエンドポイントを使用することで指定したキャンペーンに属する招待状の一覧を取得することができます。発行日時が新しいものから降順で返却されます。
+
+```shell
+curl -H "Content-Type: application/json" -u "<credential>" -i
+"https://invitation.giftee.co/api/invitations?campaign_uid=sample"
+```
+
+> レスポンス
 
 ```json
 [
   {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
+    "campaign_uid": "sample",
+    "option": null,
+    "url": "https://invitation.giftee.co/invitations/xxxx-xxxx-xxxxx-xxxxxx",
+    "status": "inactive",
+    "activated_at": null,
+    "activation_type": null,
+    "activated_shop_name": null,
+    "created_at": "2019-01-01T10:00:00+09:00"
   },
   {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+    "campaign_uid": "sample",
+    "option": null,
+    "url": "https://invitation.giftee.co/invitations/yyyy-xxxx-xxxxx-xxxxxx",
+    "status": "inactive",
+    "activated_at": null,
+    "activation_type": null,
+    "activated_shop_name": null,
+    "created_at": "2019-01-01T10:00:00+09:00"
   }
 ]
 ```
 
-This endpoint retrieves all kittens.
+### HTTP Method
+`GET`
 
-### HTTP Request
+### End Point
 
-`GET http://example.com/api/kittens`
+`https://invitation.giftee.co/api/campaigns/:id/invitations`
+
+### URL Parameters
+
+属性 | 必須 | 詳細
+--------- | ------- | -----------
+id | true | キャンペーンを一意に特定する識別子。
+
+<aside class="notice">
+URL Parameters id属性はキャンペーンIDです。こちらは事前準備にてギフティスタッフがキャンペーンを作成した後共有されます。
+</aside>
 
 ### Query Parameters
 
-Parameter | Default | Description
+属性 | 必須 | 詳細
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+count | false | 返却される招待状の数。
+max_id | false | 指定した招待状IDよりも前に発行されたもののみが返却されるようになります。
+min_id | false | 指定した招待状IDよりもあとに発行された招待状のみが返却されるようになります。
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+
+## 発行
+
+このエンドポイントを使用することで指定したキャンペーンの招待状を発行することができます。
+
+```shell
+curl -X POST -H "Content-Type: application/json" \
+-u "<credential>" \
+-d '{"campaign_uid": "sample"}' \
+"https://invitation.giftee.co/campaigns/:id/invitations"
+```
+
+> レスポンス
+
+```json
+{
+  "campaign_uid": "sample",
+  "option": null,
+  "url": "https://invitation.giftee.co/invitations/xxxx-xxxx-xxxxx-xxxxxx",
+  "status": "inactive",
+  "activated_at": null,
+  "activation_type": null,
+  "activated_shop_name": null,
+  "created_at": "2019-01-01T10:00:00+09:00"
+}
+```
+
+### HTTP Method
+`POST`
+
+### End Point
+
+`https://invitation.giftee.co/api/campaigns/:id/invitations`
+
+### URL Parameters
+
+属性 | 必須 | 詳細
+--------- | ------- | -----------
+id | true | キャンペーンを一意に特定する識別子。
+
+### Body Parameters
+
+属性 | 必須 | 詳細
+--------- | ------- | -----------
+option | false | 関連情報をエントリーに関連付けて保存することができます。
+
+<aside class="notice">
+URL Parameters id属性はキャンペーンIDです。こちらは事前準備にてギフティスタッフがキャンペーンを作成した後共有されます。
 </aside>
 
-## Get a Specific Kitten
+# 更新履歴
 
-```ruby
-require 'kittn'
+## 1.0.0 - 2019-01-25
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
+- eGift invitation Web APIドキュメント バージョン1.0.0リリース
