@@ -348,7 +348,7 @@ html, body {
 
   h1 {
     @extend %header-font;
-    font-size: 25px;
+    font-size: 2em;
     padding-top: 1.5em;
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
@@ -363,7 +363,7 @@ html, body {
 
   h2 {
     @extend %header-font;
-    font-size: 19px;
+    font-size: 1.5em;
     margin-top: 2em;
     margin-bottom: 0;
     padding-top: 1.2em;
@@ -382,7 +382,7 @@ html, body {
 
   h3, h4, h5, h6 {
     @extend %header-font;
-    font-size: 15px;
+    font-size: 1.25em;
     margin-bottom: 0.8em;
     margin-top: 1.75em;
   }
