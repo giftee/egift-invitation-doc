@@ -5,7 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell
 
 toc_footers:
-  #- <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='https://invitation.giftee.co/admin'>eGift invitation 管理画面</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -87,7 +87,39 @@ Web APIを利用するためには認証する必要があります。認証に�
 
 ## 認証情報を取得する
 
-APIの利用申請後、弊社スタッフより共有されます。
+### 1. eGift invitation 管理画面 アカウントを取得する
+現在eGift invitation 管理画面のアカウントはギフティのスタッフのみ発行が可能になっています。
+アカウントをまだお持ちでいない場合は、ギフティの担当スタッフへアカウント発行依頼をしてください。
+
+### 2. eGift invitation 管理画面へログインする
+
+![login](/images/login.png)
+
+1で取得したアカウント情報で[eGift invitation 管理画面(本番環境)](https://invitation.giftee.co/admin)へアクセスいただき、ログインします。
+
+<aside class="notice">
+尚、検証環境のアカウントは本番環境とは異なりますので、必要な場合は別途担当スタッフまでお問い合わせください。
+</aside>
+
+### 3. Web API アクセストークンを発行する
+
+ナビゲーションより`Web API`を選択し、アクセストークン発行画面に遷移します。
+![access_token_](/images/access_token_1.png)
+
+</br>
+
+`新規発行`ボタンを選択すると、アクセストークンが新規発行されます。
+![access_token_2](/images/access_token_2.png)
+
+<aside class="warning">
+こちらのモーダル内に記載されているアクセストークンを必ず控えてください。
+</aside>
+
+<aside class="warning">
+この画面を閉じてしまった場合、このアクセストークンの情報を再度閲覧することができなくなります。
+万が一、アクセストークンを控えずに画面を閉じてしまった場合は、再度アクセストークンを新規発行してください。
+</aside>
+
 
 ## 認証方法
 

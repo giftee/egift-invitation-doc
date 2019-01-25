@@ -473,6 +473,7 @@ html, body {
 
     &.warning {
       background-color: $aside-warning-bg;
+      border: 1px solid #ff9e97;
     }
 
     &.success {
