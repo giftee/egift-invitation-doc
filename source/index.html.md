@@ -158,8 +158,9 @@ URIクエリを使用します。
 > GETリクエストの場合は、URIクエリを使用します。
 
 ```shell
-curl -H "Content-Type: application/json" -u "<credential>" -i
-"https://invitation.giftee.co/api/invitations?max_id=xxxx-xxxx-xxxxx-xxxxxx"
+curl -H "Content-Type: application/json" \
+-u "<credential>" \
+-i "https://invitation.giftee.co/api/invitations?max_id=xxxx-xxxx-xxxxx-xxxxxx"
 ```
 
 ### GET以外のリクエストパラメーター
@@ -180,8 +181,8 @@ curl -X POST -H "Content-Type: application/json" \
 ## 参照
 
 ```shell
-curl -u "<credential>" -i
-"https://invitation.giftee.co/api/invitations/xxxx-xxxx-xxxxx-xxxxxx"
+curl -u "<credential>" \
+-i "https://invitation.giftee.co/api/invitations/xxxx-xxxx-xxxxx-xxxxxx"
 ```
 
 > レスポンス
@@ -223,8 +224,8 @@ idはURL(https://invitation.giftee.co/invitations/xxxx-xxxx-xxxxx-xxxxxx) のう
 このエンドポイントを使用することで指定したキャンペーンに属する招待状の一覧を取得することができます。発行日時が新しいものから降順で返却されます。
 
 ```shell
-curl -u "<credential>" -i
-"https://invitation.giftee.co/api/campaigns/sample/invitations?count=20&max_id=xxxx-xxxx-xxxxx-xxxxxx"
+curl -u "<credential>" \
+-i "https://invitation.giftee.co/api/campaigns/sample/invitations?count=20&max_id=xxxx-xxxx-xxxxx-xxxxxx"
 ```
 
 > レスポンス
@@ -285,7 +286,8 @@ min_id | false | 指定した招待状IDよりもあとに発行された招待�
 このエンドポイントを使用することで指定したキャンペーンの招待状を発行することができます。
 
 ```shell
-curl -X POST -H "Content-Type: application/json" \
+curl -X POST \
+-H "Content-Type: application/json" \
 -u "<credential>" \
 -d '{"campaign_uid": "sample"}' \
 "https://invitation.giftee.co/api/campaigns/:id/invitations"
