@@ -425,8 +425,9 @@ Web APIを使用したエントリー
 <blockquote>
 <p>GETリクエストの場合は、URIクエリを使用します。</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"Content-Type: application/json"</span> -u <span class="s2">"&lt;credential&gt;"</span> -i
-<span class="s2">"https://invitation.giftee.co/api/invitations?max_id=xxxx-xxxx-xxxxx-xxxxxx"</span>
+<pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+-u <span class="s2">"&lt;credential&gt;"</span> <span class="se">\</span>
+-i <span class="s2">"https://invitation.giftee.co/api/invitations?max_id=xxxx-xxxx-xxxxx-xxxxxx"</span>
 </code></pre><h3 id='get-2'>GET以外のリクエストパラメーター</h3>
 <p>リクエストボディを使用します。</p>
 
@@ -437,8 +438,8 @@ Web APIを使用したエントリー
 -u <span class="s2">"&lt;credential&gt;"</span> <span class="se">\</span>
 -d <span class="s1">'{"option": "sample"}'</span> <span class="se">\</span>
 <span class="s2">"https://invitation.giftee.co/api/campaign/sample/invitations"</span>
-</code></pre><h1 id='055d34e93e-2'>招待状</h1><h2 id='5ec05d664c'>参照</h2><pre class="highlight shell tab-shell"><code>curl -u <span class="s2">"&lt;credential&gt;"</span> -i
-<span class="s2">"https://invitation.giftee.co/api/invitations/xxxx-xxxx-xxxxx-xxxxxx"</span>
+</code></pre><h1 id='055d34e93e-2'>招待状</h1><h2 id='5ec05d664c'>参照</h2><pre class="highlight shell tab-shell"><code>curl -u <span class="s2">"&lt;credential&gt;"</span> <span class="se">\</span>
+-i <span class="s2">"https://invitation.giftee.co/api/invitations/xxxx-xxxx-xxxxx-xxxxxx"</span>
 </code></pre>
 <blockquote>
 <p>レスポンス</p>
@@ -479,8 +480,8 @@ idはURL(https://invitation.giftee.co/invitations/xxxx-xxxx-xxxxx-xxxxxx) のう
 </aside>
 <h2 id='7edbb8d992'>一覧参照</h2>
 <p>このエンドポイントを使用することで指定したキャンペーンに属する招待状の一覧を取得することができます。発行日時が新しいものから降順で返却されます。</p>
-<pre class="highlight shell tab-shell"><code>curl -u <span class="s2">"&lt;credential&gt;"</span> -i
-<span class="s2">"https://invitation.giftee.co/api/campaigns/sample/invitations?count=20&amp;max_id=xxxx-xxxx-xxxxx-xxxxxx"</span>
+<pre class="highlight shell tab-shell"><code>curl -u <span class="s2">"&lt;credential&gt;"</span> <span class="se">\</span>
+-i <span class="s2">"https://invitation.giftee.co/api/campaigns/sample/invitations?count=20&amp;max_id=xxxx-xxxx-xxxxx-xxxxxx"</span>
 </code></pre>
 <blockquote>
 <p>レスポンス</p>
@@ -555,7 +556,8 @@ URL Parameters id属性はキャンペーンIDです。こちらは事前準備�
 </tbody></table>
 <h2 id='6350dbebeb'>発行</h2>
 <p>このエンドポイントを使用することで指定したキャンペーンの招待状を発行することができます。</p>
-<pre class="highlight shell tab-shell"><code>curl -X POST -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+-H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -u <span class="s2">"&lt;credential&gt;"</span> <span class="se">\</span>
 -d <span class="s1">'{"campaign_uid": "sample"}'</span> <span class="se">\</span>
 <span class="s2">"https://invitation.giftee.co/api/campaigns/:id/invitations"</span>
