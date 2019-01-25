@@ -316,6 +316,7 @@
           </li>
       </ul>
         <ul class="toc-footer">
+            <li><a href='https://invitation.giftee.co/admin'>eGift invitation 管理画面</a></li>
             <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
@@ -374,8 +375,34 @@ Web APIを使用したエントリー
 <p>実際の商品と引き換えることができるチケットを指します。</p>
 <h1 id='1bff7d7a22'>認証</h1>
 <p>Web APIを利用するためには認証する必要があります。認証にはHTTP Basic Authを使用します。</p>
-<h2 id='86dfd15f39'>認証情報を取得する</h2>
-<p>APIの利用申請後、弊社スタッフより共有されます。</p>
+<h2 id='86dfd15f39'>認証情報を取得する</h2><h3 id='1-egift-invitation'>1. eGift invitation 管理画面 アカウントを取得する</h3>
+<p>現在eGift invitation 管理画面のアカウントはギフティのスタッフのみ発行が可能になっています。
+アカウントをまだお持ちでいない場合は、ギフティの担当スタッフへアカウント発行依頼をしてください。</p>
+<h3 id='2-egift-invitation'>2. eGift invitation 管理画面へログインする</h3>
+<p><img src="images/login.png" alt="login" /></p>
+
+<p>1で取得したアカウント情報で<a href="https://invitation.giftee.co/admin">eGift invitation 管理画面(本番環境)</a>へアクセスいただき、ログインします。</p>
+
+<aside class="notice">
+尚、検証環境のアカウントは本番環境とは異なりますので、必要な場合は別途担当スタッフまでお問い合わせください。
+</aside>
+<h3 id='3-web-api'>3. Web API アクセストークンを発行する</h3>
+<p>ナビゲーションより<code>Web API</code>を選択し、アクセストークン発行画面に遷移します。
+<img src="images/access_token_1.png" alt="access_token_" /></p>
+
+<p></br></p>
+
+<p><code>新規発行</code>ボタンを選択すると、アクセストークンが新規発行されます。
+<img src="images/access_token_2.png" alt="access_token_2" /></p>
+
+<aside class="warning">
+こちらのモーダル内に記載されているアクセストークンを必ず控えてください。
+</aside>
+
+<aside class="warning">
+この画面を閉じてしまった場合、このアクセストークンの情報を再度閲覧することができなくなります。
+万が一、アクセストークンを控えずに画面を閉じてしまった場合は、再度アクセストークンを新規発行してください。
+</aside>
 <h2 id='0a7bc1ba69'>認証方法</h2>
 <p><a href="https://en.wikipedia.org/wiki/Basic_access_authentication">HTTP Basic Auth</a>を使用して行います。</p>
 
