@@ -184,6 +184,13 @@ curl -X POST -H "Content-Type: application/json" \
 "https://invitation.giftee.co/api/campaign/sample/invitations"
 ```
 
+# レスポンス
+## フォーマット
+レスポンスボディにJSONフォーマットで返却されます。
+
+## 日付フォーマット
+日付はRFC3339に準拠した文字列として返却されます。
+
 # 招待状
 
 ## 参照
@@ -204,7 +211,7 @@ curl -u "<credential>" \
   "activated_at": null,
   "activation_type": null,
   "activated_shop_name": null,
-  "created_at": "2019-01-01T10:00:00+09:00"
+  "created_at": "2019-01-01T10:00:00.000+09:00"
 }
 ```
 
@@ -248,7 +255,7 @@ curl -u "<credential>" \
     "activated_at": null,
     "activation_type": null,
     "activated_shop_name": null,
-    "created_at": "2019-01-01T10:00:00+09:00"
+    "created_at": "2019-01-01T10:00:00.000+09:00"
   },
   {
     "campaign_uid": "sample",
@@ -258,7 +265,7 @@ curl -u "<credential>" \
     "activated_at": null,
     "activation_type": null,
     "activated_shop_name": null,
-    "created_at": "2019-01-01T10:00:00+09:00"
+    "created_at": "2019-01-01T10:00:00.000+09:00"
   }
 ]
 ```
@@ -312,7 +319,7 @@ curl -X POST \
   "activated_at": null,
   "activation_type": null,
   "activated_shop_name": null,
-  "created_at": "2019-01-01T10:00:00+09:00"
+  "created_at": "2019-01-01T10:00:00.000+09:00"
 }
 ```
 
