@@ -293,6 +293,14 @@
               </ul>
           </li>
           <li>
+            <a href="#99cdae5b4b" class="toc-h1 toc-link" data-title="レスポンス">レスポンス</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#2373dace9c" class="toc-h2 toc-link" data-title="フォーマット">フォーマット</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#055d34e93e-2" class="toc-h1 toc-link" data-title="招待状">招待状</a>
               <ul class="toc-list-h2">
                   <li>
@@ -343,30 +351,30 @@
 <p><img src="images/egift-invitation-overview.png" alt="overview" /></p>
 <h2 id='2607820bb6'>事前準備</h2>
 <ul>
-<li>キャンペーンの設定</li>
+<li><a href="#2032565a4d">キャンペーン</a>の設定</li>
 <li>店舗の登録</li>
-<li>スタンプ利用設定</li>
-<li>贈呈するギフトの設定</li>
+<li><a href="#79a934542e">スタンプ</a>利用設定</li>
+<li>贈呈する<a href="#de771d359f">ギフト</a>の設定</li>
 <li>管理画面アカウントの発行</li>
 </ul>
 
 <p>などをギフティのスタッフが事前に行いキャンペーンが実施可能な状態にします。</p>
 <h2 id='1'>1. キャンペーンへエントリー</h2>
-<p>キャンペーンへエントリーすることで参加者は招待状(ユニークなURL)を取得します。</p>
+<p><a href="#2032565a4d">キャンペーン</a>へ<a href="#9eddf7773b">エントリー</a>することで参加者は<a href="#055d34e93e">招待状</a>を取得します。</p>
 <h2 id='2'>2. 来店/来場</h2>
-<p>キャンペーンへエントリーした参加者に、エントリー時に取得した招待状を対象の店舗/会場へ持参してもらいます。</p>
+<p><a href="#2032565a4d">キャンペーン</a>へ<a href="#9eddf7773b">エントリー</a>した参加者に、<a href="#9eddf7773b">エントリー</a>時に取得した<a href="#055d34e93e">招待状</a>を対象の店舗/会場へ持参してもらいます。</p>
 
-<p>対象店舗には事前準備にて用意したスタンプが設置してあります。</p>
+<p>対象店舗には事前準備にて用意した<a href="#79a934542e">スタンプ</a>が設置してあります。</p>
 <h2 id='3'>3. 店舗/会場にてアクティベーション</h2>
-<p>キャンペーン/施策に応じた条件を満たした参加者の持参した招待状へスタンプを押すことでアクティベーションをします。</p>
+<p>キャンペーン/施策に応じた条件を満たした参加者の持参した<a href="#055d34e93e">招待状</a>へ<a href="#79a934542e">スタンプ</a>を押すことで<a href="#4eda2472d2">アクティベーション</a>をします。</p>
 
-<p>各店舗ごとのアクティベーション実績は管理画面より確認することができます。</p>
+<p>各店舗ごとの<a href="#4eda2472d2">アクティベーション</a>実績は管理画面より確認することができます。</p>
 
-<p>キャンペーン参加者は招待状をアクティベーションしてもらったことで、ギフト取得可能な状態になります。</p>
+<p><a href="#2032565a4d">キャンペーン</a>参加者は<a href="#055d34e93e">招待状</a>を<a href="#4eda2472d2">アクティベーション</a>してもらったことで、<a href="#de771d359f">ギフト</a>取得可能な状態になります。</p>
 <h2 id='4'>4. ギフト贈呈</h2>
-<p>アクティベーション済みの招待状からギフト受け取りボタンを押下することで、キャンペーン参加者はギフトが取得できます。</p>
+<p><a href="#4eda2472d2">アクティベーション</a>済みの<a href="#055d34e93e">招待状</a>からギフト受け取りボタンを押下することで、キャンペーン参加者は<a href="#de771d359f">ギフト</a>が取得できます。</p>
 
-<p>ここでは事前準備の際に設定したギフトが発行されます。</p>
+<p>ここでは事前準備の際に設定した<a href="#de771d359f">ギフト</a>が発行されます。</p>
 <h1 id='77eadd905f'>用語定義</h1><h2 id='2032565a4d'>キャンペーン</h2>
 <p>実施する施策各種設定を保持するリソース。</p>
 
@@ -456,7 +464,11 @@
 -u <span class="s2">"&lt;credential&gt;"</span> <span class="se">\</span>
 -d <span class="s1">'{"option": "sample"}'</span> <span class="se">\</span>
 <span class="s2">"https://invitation.giftee.co/api/campaign/sample/invitations"</span>
-</code></pre><h1 id='055d34e93e-2'>招待状</h1><h2 id='5ec05d664c'>参照</h2><pre class="highlight shell tab-shell"><code>curl -u <span class="s2">"&lt;credential&gt;"</span> <span class="se">\</span>
+</code></pre><h1 id='99cdae5b4b'>レスポンス</h1><h2 id='2373dace9c'>フォーマット</h2>
+<p>レスポンスボディにJSONフォーマットで返却されます。</p>
+<h3 id='49b333705a'>日付フォーマット</h3>
+<p>日付はRFC3339に準拠した文字列として返却されます。</p>
+<h1 id='055d34e93e-2'>招待状</h1><h2 id='5ec05d664c'>参照</h2><pre class="highlight shell tab-shell"><code>curl -u <span class="s2">"&lt;credential&gt;"</span> <span class="se">\</span>
 -i <span class="s2">"https://invitation.giftee.co/api/invitations/xxxx-xxxx-xxxxx-xxxxxx"</span>
 </code></pre>
 <blockquote>
@@ -470,7 +482,7 @@
   </span><span class="s2">"activated_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"activation_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"activated_shop_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-01T10:00:00+09:00"</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-01T10:00:00.000+09:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>このエンドポイントを使用することで指定した招待状を取得することができます。</p>
@@ -513,7 +525,7 @@ idはURL(https://invitation.giftee.co/invitations/xxxx-xxxx-xxxxx-xxxxxx) のう
     </span><span class="s2">"activated_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"activation_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"activated_shop_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-01T10:00:00+09:00"</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-01T10:00:00.000+09:00"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="s2">"campaign_uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sample"</span><span class="p">,</span><span class="w">
@@ -523,7 +535,7 @@ idはURL(https://invitation.giftee.co/invitations/xxxx-xxxx-xxxxx-xxxxxx) のう
     </span><span class="s2">"activated_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"activation_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"activated_shop_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-01T10:00:00+09:00"</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-01T10:00:00.000+09:00"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre><h3 id='http-method-2'>HTTP Method</h3>
@@ -591,7 +603,7 @@ URL Parameters id属性はキャンペーンIDです。こちらは事前準備�
   </span><span class="s2">"activated_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"activation_type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"activated_shop_name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-01T10:00:00+09:00"</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-01-01T10:00:00.000+09:00"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-method-3'>HTTP Method</h3>
 <p><code>POST</code></p>
