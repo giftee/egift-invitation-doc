@@ -137,6 +137,9 @@ Web APIを利用するためには認証する必要があります。認証に�
 
 <aside class="notice">
 "credentials"には実際のトークンを入れてご利用ください。
+</aside>
+
+<aside class="notice">
 "credentials"は共有されたアクセストークンがBase64エンコードされたものであることにご注意ください。
 </aside>
 
