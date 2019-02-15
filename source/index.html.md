@@ -136,7 +136,7 @@ Web APIを利用するためには認証する必要があります。認証に�
 `Authorization: Basic credentials`
 
 <aside class="notice">
-"credentials"には実際のトークンを入れてご利用ください。
+"credentials"は共有されたアクセストークンがBase64エンコードされたものであることにご注意ください。
 </aside>
 
 # リクエスト基本設定
@@ -166,9 +166,8 @@ URIクエリを使用します。
 > GETリクエストの場合は、URIクエリを使用します。
 
 ```shell
-curl -H "Content-Type: application/json" \
--u "<credential>" \
--i "https://invitation.giftee.co/api/invitations?max_id=xxxx-xxxx-xxxxx-xxxxxx"
+curl https://invitation.giftee.co/api/campaigns/sample/invitations \
+  -u <credential>:
 ```
 
 ### GET以外のリクエストパラメーター
@@ -178,10 +177,11 @@ curl -H "Content-Type: application/json" \
 > GET以外のリクエストの場合は、リクエストボディを使用します。
 
 ```shell
-curl -X POST -H "Content-Type: application/json" \
--u "<credential>" \
--d '{"option": "sample"}' \
-"https://invitation.giftee.co/api/campaign/sample/invitations"
+curl https://invitation.giftee.co/api/campaigns/sample/invitations \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -u <credential>: \
+  -d '{"option": "sample"}'
 ```
 
 # レスポンス
@@ -196,8 +196,8 @@ curl -X POST -H "Content-Type: application/json" \
 ## 参照
 
 ```shell
-curl -u "<credential>" \
--i "https://invitation.giftee.co/api/invitations/xxxx-xxxx-xxxxx-xxxxxx"
+curl https://invitation.giftee.co/api/invitations/xxxx-xxxx-xxxxx-xxxxxx \
+  -u <credential>:
 ```
 
 > レスポンス
@@ -239,8 +239,8 @@ idはURL(https://invitation.giftee.co/invitations/xxxx-xxxx-xxxxx-xxxxxx) のう
 このエンドポイントを使用することで指定したキャンペーンに属する招待状の一覧を取得することができます。発行日時が新しいものから降順で返却されます。
 
 ```shell
-curl -u "<credential>" \
--i "https://invitation.giftee.co/api/campaigns/sample/invitations?count=20&max_id=xxxx-xxxx-xxxxx-xxxxxx"
+curl https://invitation.giftee.co/api/campaigns/:id/invitations?count=20&max_id=xxxx-xxxx-xxxxx-xxxxxx \
+  -u <credential>:
 ```
 
 > レスポンス
@@ -301,11 +301,11 @@ min_id | false | 指定した招待状IDよりもあとに発行された招待�
 このエンドポイントを使用することで指定したキャンペーンの招待状を発行することができます。
 
 ```shell
-curl -X POST \
--H "Content-Type: application/json" \
--u "<credential>" \
--d '{"campaign_uid": "sample"}' \
-"https://invitation.giftee.co/api/campaigns/:id/invitations"
+curl https://invitation.giftee.co/api/campaigns/:id/invitations \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -u <credential>: \
+  -d '{"option": "sample"}'
 ```
 
 > レスポンス
