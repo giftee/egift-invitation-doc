@@ -298,6 +298,9 @@
                   <li>
                     <a href="#2373dace9c" class="toc-h2 toc-link" data-title="フォーマット">フォーマット</a>
                   </li>
+                  <li>
+                    <a href="#006a70a202" class="toc-h2 toc-link" data-title="ステータスコード">ステータスコード</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -328,6 +331,9 @@
           <li>
             <a href="#07437234ee" class="toc-h1 toc-link" data-title="更新履歴">更新履歴</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#1-0-1-2019-03-28" class="toc-h2 toc-link" data-title="1.0.1 - 2019-03-28">1.0.1 - 2019-03-28</a>
+                  </li>
                   <li>
                     <a href="#1-0-0-2019-01-25" class="toc-h2 toc-link" data-title="1.0.0 - 2019-01-25">1.0.0 - 2019-01-25</a>
                   </li>
@@ -468,6 +474,10 @@
 <p>レスポンスボディにJSONフォーマットで返却されます。</p>
 <h3 id='49b333705a'>日付フォーマット</h3>
 <p>日付はRFC3339に準拠した文字列として返却されます。</p>
+<h2 id='006a70a202'>ステータスコード</h2>
+<p>正常系の場合はすべて<code>200 OK</code>が返却されます。</p>
+
+<p>異常系に関しては<a href="#c610894da7">エラー定義</a>を参照ください。</p>
 <h1 id='055d34e93e-2'>招待状</h1><h2 id='5ec05d664c'>参照</h2><pre class="highlight shell tab-shell"><code>curl https://invitation.giftee.co/api/invitations/xxxx-xxxx-xxxxx-xxxxxx <span class="se">\</span>
   -u &lt;credential&gt;:
 </code></pre>
@@ -682,7 +692,11 @@ URL Parameters id属性はキャンペーンIDです。こちらは事前準備�
 <td>不明なエラーが発生しました。</td>
 </tr>
 </tbody></table>
-<h1 id='07437234ee'>更新履歴</h1><h2 id='1-0-0-2019-01-25'>1.0.0 - 2019-01-25</h2>
+<h1 id='07437234ee'>更新履歴</h1><h2 id='1-0-1-2019-03-28'>1.0.1 - 2019-03-28</h2>
+<ul>
+<li>レスポンス ステータスコードを追加</li>
+</ul>
+<h2 id='1-0-0-2019-01-25'>1.0.0 - 2019-01-25</h2>
 <ul>
 <li>eGift invitation Web APIドキュメント バージョン1.0.0リリース</li>
 </ul>
