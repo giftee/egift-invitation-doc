@@ -209,10 +209,10 @@ curl https://invitation.giftee.co/api/invitations/xxxx-xxxx-xxxxx-xxxxxx \
 
 ```json
 {
+  "id": "xxxx-xxxx-xxxxx-xxxxxx",
   "campaign_uid": "sample",
   "option": null,
   "url": "https://invitation.giftee.co/invitations/xxxx-xxxx-xxxxx-xxxxxx",
-  "status": "inactive",
   "activated_at": null,
   "activation_type": null,
   "activated_shop_name": null,
@@ -253,20 +253,20 @@ curl https://invitation.giftee.co/api/campaigns/:id/invitations?count=20&max_id=
 ```json
 [
   {
+    "id": "xxxx-xxxx-xxxxx-xxxxxx",
     "campaign_uid": "sample",
     "option": null,
     "url": "https://invitation.giftee.co/invitations/xxxx-xxxx-xxxxx-xxxxxx",
-    "status": "inactive",
     "activated_at": null,
     "activation_type": null,
     "activated_shop_name": null,
     "created_at": "2019-01-01T10:00:00.000+09:00"
   },
   {
+    "id": "xxxx-xxxx-xxxxx-xxxxxx",
     "campaign_uid": "sample",
     "option": null,
     "url": "https://invitation.giftee.co/invitations/yyyy-xxxx-xxxxx-xxxxxx",
-    "status": "inactive",
     "activated_at": null,
     "activation_type": null,
     "activated_shop_name": null,
@@ -317,10 +317,10 @@ curl https://invitation.giftee.co/api/campaigns/:id/invitations \
 
 ```json
 {
+  "id": "xxxx-xxxx-xxxxx-xxxxxx",
   "campaign_uid": "sample",
   "option": null,
   "url": "https://invitation.giftee.co/invitations/xxxx-xxxx-xxxxx-xxxxxx",
-  "status": "inactive",
   "activated_at": null,
   "activation_type": null,
   "activated_shop_name": null,
@@ -378,6 +378,10 @@ E0003 | 400 | リクエスト内容が正しくありません。
 E9999 | 500 | 不明なエラーが発生しました。
 
 # 更新履歴
+
+## 1.0.2 - 2019-04-10
+- 各種招待状レスポンスから本来返却されないstatus属性を削除
+- 各種招待状レスポンスへ本来返却しているid属性追加
 
 ## 1.0.1 - 2019-03-28
 - レスポンス ステータスコードを追加
